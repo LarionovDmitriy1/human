@@ -16,9 +16,5 @@ namespace human
 
         }
         public abstract void ChangeWork();
-        public virtual void GetInfo()
-        {
-
-        }
     }
 }

@@ -8,7 +8,7 @@ namespace human
 {
     internal class Driver : Human
     {
-        public Driver(string name,string surname)
+        public Driver(string name, string surname)
         {
             _name = name;
             _surname = surname;
@@ -19,7 +19,7 @@ namespace human
         {
             Random rnd = new Random();
             int driver = rnd.Next(1, 6);
-            if(driver == 1)
+            if (driver == 1)
             {
                 _workplace = "Uber";
             }
@@ -65,10 +65,11 @@ namespace human
         }
         public override void ChangeWork()
         {
-
+            Console.WriteLine();
+            Console.WriteLine("");
         }
-        public override void GetInfo()
-        {            
+        public void GetInfo()
+        {
             Console.WriteLine($"Таксист - {_name} {_surname}. Место работы - {_workplace}. Стаж работы - {_workexp}");
             Console.WriteLine();
         }

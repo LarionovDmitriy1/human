@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace human
 {
-    internal class Teacher : Human 
+    internal class Teacher : Human
     {
         private string _workplace;
         private string _workexp;
@@ -66,8 +66,8 @@ namespace human
         {
 
         }
-        public override void GetInfo()
-        {          
+        public void GetInfo()
+        {
             Console.WriteLine($"Учитель - {_name} {_surname}. Место работы - {_workplace}. Стаж работы - {_workexp}");
             Console.WriteLine();
         }

@@ -15,6 +15,7 @@ namespace human
         {
             _name = name;
             _surname = surname;
+            _grant = 712;
         }
         public override void Work()
         {
@@ -66,10 +67,65 @@ namespace human
         }
         public override void ChangeWork()
         {
-            
+            Console.WriteLine("Куда вы хотите перевестись");
+            Console.WriteLine("1. НТТ");
+            Console.WriteLine("2. Горная шарага");
+            Console.WriteLine("3. Автомобильная шарага");
+            Console.WriteLine("4. МГУ");
+            string change1 = Console.ReadLine();
+            bool changeplace3 = int.TryParse(change1, out var change);           
+            if(change == 1)
+            {
+                if (_placestudy != "НТТ")
+                {
+                    _placestudy = "НТТ";
+                }
+                else
+                {
+                    Console.WriteLine("Вы уже учитесь здесь");
+                }
+            }
+            else if(change == 2)
+            {
+                if (_placestudy != "Горная шарага")
+                {
+                    _placestudy = "Горная шарага";
+                }
+                else
+                {
+                    Console.WriteLine("Вы уже учитесь здесь");
+                }
+            }
+            else if (change == 3)
+            {
+                if (_placestudy != "Автомобильная шарага")
+                {
+                    _placestudy = "Автомобильная шарага";
+                }
+                else
+                {
+                    Console.WriteLine("Вы уже учитесь здесь");
+                }
+            }
+            else if (change == 4)
+            {
+                if (_placestudy != "МГУ")
+                {
+                    _placestudy = "МГУ";
+                }
+                else
+                {
+                    Console.WriteLine("Вы уже учитесь здесь");
+                }  
+            }
+            else
+            {
+                Console.WriteLine("Выберите учреждение из списка");
+            }
+
         }
-        public override void GetInfo()
-        {           
+        public void GetInfo()
+        {
             Console.WriteLine($"Студент - {_name} {_surname}. Место учёбы - {_placestudy}. Курс - {_course}");
             Console.WriteLine();
         }
