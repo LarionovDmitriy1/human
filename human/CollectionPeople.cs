@@ -24,6 +24,7 @@ namespace human
                         Driver driver = new Driver("Анатолий", "Лифтенштейн");
                         driver.Work();
                         humans.Add(driver);
+
                     }
                     else if (humandriver == 2)
                     {
@@ -143,18 +144,40 @@ namespace human
         }
         public void ChangeWork()
         {
-            foreach(Human human in humans)
+
+            Console.WriteLine("1. Перевести студента");
+            Console.WriteLine("2. Изменить работу учителю");
+            Console.WriteLine("3. Изменить работу водителю");
+            string a = Console.ReadLine();
+            int b = int.Parse(a);
+            foreach (Human human in humans)
             {
-                Console.WriteLine("1. Перевести студента");
-                Console.WriteLine("2. Изменить работу учителю");
-                Console.WriteLine("3. Изменить работу водителю");
-                string a = Console.ReadLine();
-                int b = int.Parse(a);
-                if (b == 1 && human is Student student)
+
+                if (b == 1)
                 {
-                    student.GetInfo();
-                    student.ChangeWork();
+                    List<Student> students = new List<Student>();
+                    foreach (Human hum in humans)
+                    {
+                        if (hum is Student student)
+                        {
+                            students.Add(student);
+                        }
+                    }
+                    Console.WriteLine("Выберите студента которого хотите перевести");
+                    foreach (Student item in students)
+                    {
+                        item.GetInfo();
+                    }
+                    string select = Console.ReadLine();
+                    foreach (Student item in students)
+                    {
+                        if (item.GetName() == select)
+                        {
+                            item.ChangeWork();
+                        }
+                    }
                 }
+
                 if (b == 2 && human is Teacher teacher)
                 {
                     teacher.GetInfo();
@@ -165,11 +188,20 @@ namespace human
                     drive.GetInfo();
                     drive.ChangeWork();
                 }
-                else
-                {
-                    Console.WriteLine("Выберите меню из списка");
-                }
+
             }
+        }
+        private void ChangePeopleWork(Student student)
+        {
+            student.ChangeWork();
+        }
+        private void ChangePeopleWork(Driver driver)
+        {
+            driver.ChangeWork();
+        }
+        private void ChangePeopleWork(Teacher teacher)
+        {
+            teacher.ChangeWork();
         }
     }
 }

@@ -129,6 +129,10 @@ namespace human
             Console.WriteLine($"Студент - {_name} {_surname}. Место учёбы - {_placestudy}. Курс - {_course}");
             Console.WriteLine();
         }
+        public string GetName()
+        {
+            return _name;
+        }
     }
 }
 
