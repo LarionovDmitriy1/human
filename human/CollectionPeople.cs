@@ -152,7 +152,6 @@ namespace human
             int b = int.Parse(a);
             foreach (Human human in humans)
             {
-
                 if (b == 1)
                 {
                     List<Student> students = new List<Student>();
@@ -164,44 +163,213 @@ namespace human
                         }
                     }
                     Console.WriteLine("Выберите студента которого хотите перевести");
+                    Console.WriteLine();
+                    Console.WriteLine("1. Выйти.");
+                    Console.WriteLine();
                     foreach (Student item in students)
                     {
                         item.GetInfo();
                     }
-                    string select = Console.ReadLine();
+                    string select1 = Console.ReadLine();
+                    bool g = int.TryParse(select1, out var select);
+                    if (select == 1)
+                    {
+                        return;
+                    }
                     foreach (Student item in students)
                     {
-                        if (item.GetName() == select)
+                        if (item.GetName() == select1)
                         {
                             item.ChangeWork();
                         }
                     }
                 }
-
-                if (b == 2 && human is Teacher teacher)
+                else if (b == 2)
                 {
-                    teacher.GetInfo();
-                    teacher.ChangeWork();
+                    List<Teacher> teachers = new List<Teacher>();
+                    foreach (Human hum in humans)
+                    {
+                        if (hum is Teacher teacher)
+                        {
+                            teachers.Add(teacher);
+                        }
+                    }
+                    Console.WriteLine("Выберите учителя которому хотите изменить работу");
+                    Console.WriteLine();
+                    Console.WriteLine("1. Выйти.");
+                    Console.WriteLine();
+                    foreach (Teacher item in teachers)
+                    {
+                        item.GetInfo();
+                    }
+                    string select1 = Console.ReadLine();
+                    bool g = int.TryParse(select1, out var select);
+                    if (select == 1)
+                    {
+                        return;
+                    }
+                    foreach (Teacher item in teachers)
+                    {
+                        if (item.GetName() == select1)
+                        {
+                            item.ChangeWork();
+                        }
+                    }
                 }
-                else if (b == 3 && human is Driver drive)
+                else if (b == 3)
                 {
-                    drive.GetInfo();
-                    drive.ChangeWork();
+                    List<Driver> drivers = new List<Driver>();
+                    foreach (Human hum in humans)
+                    {
+                        if (hum is Driver driver)
+                        {
+                            drivers.Add(driver);
+                        }
+                    }
+                    Console.WriteLine("Выберите водителя которого хотите устроить в другую компанию");
+                    Console.WriteLine();
+                    Console.WriteLine("1. Выйти.");
+                    Console.WriteLine();
+                    foreach (Driver item in drivers)
+                    {
+                        item.GetInfo();
+                    }
+                    string select1 = Console.ReadLine();
+                    bool g = int.TryParse(select1, out var select);
+                    if (select == 1)
+                    {
+                        return;
+                    }
+                    foreach (Driver item in drivers)
+                    {
+                        if (item.GetName() == select1)
+                        {
+                            item.ChangeWork();
+                        }
+                    }
+                }
+                else
+                {
+                    Console.WriteLine();
+                    Console.WriteLine("Выберите пункт из меню");
+                    Console.WriteLine();
                 }
 
             }
         }
-        private void ChangePeopleWork(Student student)
+        public void Dismiss()
         {
-            student.ChangeWork();
+            Console.WriteLine("1. Уволить учителя");
+            Console.WriteLine("2. Уволить водителя");
+            string a = Console.ReadLine();
+            bool c = int.TryParse(a,out var b);
+            foreach (Human human in humans)
+            {
+                if (b == 1)
+                {
+                    List<Teacher> teachers = new List<Teacher>();
+                    foreach (Human hum in humans)
+                    {
+                        if (hum is Teacher teacher)
+                        {
+                            teachers.Add(teacher);
+                        }
+                    }
+                    Console.WriteLine("Выберите учителя которому хотите изменить работу");
+                    Console.WriteLine();
+                    Console.WriteLine("1. Выйти.");
+                    Console.WriteLine();
+                    foreach (Teacher item in teachers)
+                    {
+                        item.GetInfo();
+                    }
+                    string select1 = Console.ReadLine();
+                    bool g = int.TryParse(select1, out var select);
+                    if (select == 1)
+                    {
+                        return;
+                    }
+                    foreach (Teacher item in teachers)
+                    {
+                        if (item.GetName() == select1)
+                        {
+                            item.Dismiss();
+                            return;
+                        }
+                    }
+                }
+                else if (b == 2)
+                {
+                    List<Driver> drivers = new List<Driver>();
+                    foreach (Human hum in humans)
+                    {
+                        if (hum is Driver driver)
+                        {
+                            drivers.Add(driver);
+                        }
+                    }
+                    Console.WriteLine("Выберите водителя которого хотите устроить в другую компанию");
+                    Console.WriteLine();
+                    Console.WriteLine("1. Выйти.");
+                    Console.WriteLine();
+                    foreach (Driver item in drivers)
+                    {
+                        item.GetInfo();
+                    }
+                    string select1 = Console.ReadLine();
+                    bool g = int.TryParse(select1, out var select);
+                    if (select == 1)
+                    {
+                        return;
+                    }
+                    foreach (Driver item in drivers)
+                    {
+                        if (item.GetName() == select1)
+                        {
+                            item.Dismiss();
+                            return;
+                        }
+                    }
+                }
+            }
+
         }
-        private void ChangePeopleWork(Driver driver)
+        public void AxpelAStudent()
         {
-            driver.ChangeWork();
+            List<Student> students = new List<Student>();
+            foreach (Human hum in humans)
+            {
+                if (hum is Student student)
+                {
+                    students.Add(student);
+                }
+            }
+            Console.WriteLine("Выберите студента которого хотите отчислить");
+            Console.WriteLine();
+            Console.WriteLine("1. Выйти.");
+            Console.WriteLine();
+            foreach (Student item in students)
+            {
+                item.GetInfo();
+            }
+            string select1 = Console.ReadLine();
+            bool g = int.TryParse(select1, out var select);
+            if (select == 1)
+            {
+                return;
+            }
+            foreach (Student item in students)
+            {
+                if (item.GetName() == select1)
+                {
+                    item.Dismiss();
+                    return;
+                }
+            }
         }
-        private void ChangePeopleWork(Teacher teacher)
+        public void Grant(Student student)
         {
-            teacher.ChangeWork();
+            student.Grant();
         }
     }
 }

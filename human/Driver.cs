@@ -65,13 +65,102 @@ namespace human
         }
         public override void ChangeWork()
         {
-            Console.WriteLine();
-            Console.WriteLine("");
+            Console.WriteLine("В какую компанию вы хотите устроить водителя?");
+            Console.WriteLine("1. Uber");
+            Console.WriteLine("2. Yandex");
+            Console.WriteLine("3. Pilot");
+            Console.WriteLine("4. Red");
+            Console.WriteLine("5. Careem");
+            Console.WriteLine("6. Выйти");
+            string change1 = Console.ReadLine();
+            bool changeplace3 = int.TryParse(change1, out var change);
+            if (change == 1)
+            {
+                if (_workplace != "Uber")
+                {
+                    _workplace = "Yandex";
+                }
+                else
+                {
+                    Console.WriteLine("Этот человек уже работает здесь");
+                }
+            }
+            else if (change == 2)
+            {
+                if (_workplace != "Yandex")
+                {
+                    _workplace = "Yandex";
+                }
+                else
+                {
+                    Console.WriteLine("Этот человек уже работает здесь");
+                }
+            }
+            else if (change == 3)
+            {
+                if (_workplace != "Pilot")
+                {
+                    _workplace = "Pilot";
+                }
+                else
+                {
+                    Console.WriteLine("Этот человек уже работает здесь");
+                }
+            }
+            else if (change == 4)
+            {
+                if (_workplace != "Red")
+                {
+                    _workplace = "Red";
+                }
+                else
+                {
+                    Console.WriteLine("Этот человек уже работает здесь");
+                }
+            }
+            else if (change == 5)
+            {
+                if (_workplace != "Careem")
+                {
+                    _workplace = "Careem";
+                }
+                else
+                {
+                    Console.WriteLine("Этот человек уже работает здесь");
+                }
+            }
+            else if (change == 6)
+            {
+                return;
+            }
+            else
+            {
+                Console.WriteLine("Выберите учреждение из списка");
+            }
         }
         public void GetInfo()
         {
             Console.WriteLine($"Таксист - {_name} {_surname}. Место работы - {_workplace}. Стаж работы - {_workexp}");
             Console.WriteLine();
+        }
+        public string GetName()
+        {
+            return _name;
+        }
+        public void Dismiss()
+        {   
+            if (_workplace == "Безработный(ая)")
+            {
+                Console.WriteLine();
+                Console.WriteLine("Он(а) и так безработный(ая) куда ещё больше");
+                Console.WriteLine();
+                return;
+            }
+            else if (_workplace != "Безработный(ая)")
+            {
+                _workplace = "Безработный(ая)";
+                
+            }
         }
     }
 }
